@@ -28,7 +28,7 @@ RUN R -e "install.packages(c('shiny', 'rmarkdown', 'tm', 'wordcloud', 'memoise')
 COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
 COPY /myapp/app.R /srv/shiny-server/
 
-EXPOSE 80
+EXPOSE 3838
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
 
