@@ -16,28 +16,6 @@ RUN wget --no-verbose http://security.debian.org/pool/updates/main/o/openssl/lib
 && dpkg -i libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
 && rm -f libssl0.9.8_0.9.8o-4squeeze14_amd64.deb
 
-RUN apt-get update \
-    && apt-get install -y software-properties-common \
-        wget \
-    && sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt trusty-pgdg main" >> /etc/apt/sources.list' \
-    && wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add - \
-    && sudo apt-get update \
-    && apt-get install -y postgresql-9.3-postgis-2.1 \
-        postgresql-9.3-postgis-scripts \ 
-        postgresql-9.3-pgrouting \
-        liblwgeom-dev \
-    && apt-get clean \
-    && apt-get autoclean \
-    && apt-get autoremove
-
-
-# Install the latest postgresql
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
-    apt-get update && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get install -y --force-yes \
-        postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3 && \
-    /etc/init.d/postgresql stop
 
 # Download and install shiny server
 RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubuntu-12.04/x86_64/VERSION -O "version.txt" && \
