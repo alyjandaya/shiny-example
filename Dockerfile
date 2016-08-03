@@ -11,11 +11,24 @@ RUN apt-get update && apt-get install -y \
     libcairo2-dev/unstable \
     libxt-dev
 
-
 # Download and install libssl 0.9.8
-RUN wget --no-verbose http://security.debian.org/pool/updates/main/o/openssl/libssl1.0.0-dbg_1.0.1e-2+deb7u20_kfreebsd-amd64.deb \
-&& dpkg -i libssl1.0.0-dbg_1.0.1e-2+deb7u20_kfreebsd-amd64.deb \
-&& rm -f libssl1.0.0-dbg_1.0.1e-2+deb7u20_kfreebsd-amd64.deb
+RUN wget --no-verbose http://security.debian.org/pool/updates/main/o/openssl/libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
+&& dpkg -i libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
+&& rm -f libssl0.9.8_0.9.8o-4squeeze14_amd64.deb
+
+RUN apt-get update \
+    && apt-get install -y software-properties-common \
+        wget \
+    && sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt trusty-pgdg main" >> /etc/apt/sources.list' \
+    && wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add - \
+    && sudo apt-get update \
+    && apt-get install -y postgresql-9.3-postgis-2.1 \
+        postgresql-9.3-postgis-scripts \ 
+        postgresql-9.3-pgrouting \
+        liblwgeom-dev \
+    && apt-get clean \
+    && apt-get autoclean \
+    && apt-get autoremove
 
 
 # Install the latest postgresql
