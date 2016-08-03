@@ -13,9 +13,9 @@ RUN apt-get update && apt-get install -y \
 
 
 # Download and install libssl 0.9.8
-RUN wget --no-verbose http://security.debian.org/pool/updates/main/o/openssl/libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
-&& dpkg -i libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
-&& rm -f libssl0.9.8_0.9.8o-4squeeze14_amd64.deb
+RUN wget --no-verbose http://security.debian.org/pool/updates/main/o/openssl/libssl1.0.0-dbg_1.0.1e-2+deb7u20_kfreebsd-amd64.deb \
+&& dpkg -i libssl1.0.0-dbg_1.0.1e-2+deb7u20_kfreebsd-amd64.deb \
+&& rm -f libssl1.0.0-dbg_1.0.1e-2+deb7u20_kfreebsd-amd64.deb
 
 
 # Install the latest postgresql
