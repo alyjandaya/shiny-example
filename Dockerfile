@@ -11,6 +11,11 @@ RUN apt-get update && apt-get install -y \
     libcairo2-dev/unstable \
     libxt-dev
 
+#install postgressql
+RUN wget -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | apt-key add - echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+RUN apt-get update
+RUN apt-get install -y postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3
+
 # Download and install libssl 0.9.8
 RUN wget --no-verbose http://security.debian.org/pool/updates/main/o/openssl/libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
 && dpkg -i libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
