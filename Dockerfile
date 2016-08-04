@@ -24,6 +24,8 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     gdebi -n ss-latest.deb && \
     rm -f version.txt ss-latest.deb
 
+RUN wget --no-verbose https://cran.r-project.org/src/contrib/RPostgreSQL_0.4-1.tar.gz
+
 RUN R -e "install.packages(c('shiny','shinyjs','DBI','digest'), repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages(c('RPostgreSQL'), repos='http://cran.rstudio.com/')"
 
