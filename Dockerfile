@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     libcairo2-dev/unstable \
     libxt-dev
 
-RUN apt-get -y install postgresql-9.3 libpq-dev
+RUN apt-get -y install postgresql-9.2 libpq-dev
     
 # Download and install libssl 0.9.8
 RUN wget --no-verbose http://security.debian.org/pool/updates/main/o/openssl/libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
