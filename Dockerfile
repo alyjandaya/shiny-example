@@ -6,13 +6,10 @@ RUN apt-get update && apt-get install -y \
     sudo \
     gdebi-core \
     pandoc \
-    pandoc-citeproc \
-    libcurl4-gnutls-dev \
-    libcairo2-dev/unstable \
-    libxt-dev
+    pandoc-citeproc
 
 RUN apt-get install -y postgresql
-RUN apt-get install -y libpq-fe.h
+RUN apt-get install -y libpq-dev
 
 # Download and install libssl 0.9.8
 RUN wget --no-verbose http://security.debian.org/pool/updates/main/o/openssl/libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
